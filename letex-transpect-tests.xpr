@@ -6,10 +6,6 @@
             <serialized version="21.1" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
-                        <String>catalog.verbose.level</String>
-                        <Integer>1</Integer>
-                    </entry>
-                    <entry>
                         <String>catalogs.v5</String>
                         <String-array>
                             <String>${pdu}/calabash/xmlcatalog/catalog.xml</String>
