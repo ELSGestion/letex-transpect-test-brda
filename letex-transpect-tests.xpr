@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="21.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="\Qletex-transpect-tests.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="21.1" xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>catalog.verbose.level</String>
+                        <Integer>1</Integer>
+                    </entry>
+                    <entry>
+                        <String>catalogs.v5</String>
+                        <String-array>
+                            <String>${pdu}/calabash/xmlcatalog/catalog.xml</String>
+                        </String-array>
+                    </entry>
+                    <entry>
+                        <String>editor.detect.indent.on.open</String>
+                        <Boolean>false</Boolean>
+                    </entry>
+                    <entry>
+                        <String>editor.indent.on.paste</String>
+                        <Boolean>false</Boolean>
+                    </entry>
+                    <entry>
+                        <String>editor.indent.size.v9.2</String>
+                        <Integer>2</Integer>
+                    </entry>
+                    <entry>
+                        <String>editor.line.width</String>
+                        <Integer>120</Integer>
+                    </entry>
+                    <entry>
+                        <String>key.editor.format.option.pane.group</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.editor.format.xml.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.xml.catalog.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>prefer</String>
+                        <String>system</String>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="letex-transpect-tests.xpr">
+        <folder path="."/>
+    </projectTree>
+</project>
