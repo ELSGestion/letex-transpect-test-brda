@@ -3,7 +3,7 @@
   xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:tr="http://transpect.io" version="1.0" name="omnibook2idml"
   type="tr:omnibook2idml">
 
-  <p:option name="debug" required="false" select="'yes'"/>
+  <p:option name="debug" required="false" select="'no'"/>
   <p:option name="debug-dir-uri" required="false" select="resolve-uri('debug')"/>
   <p:option name="validate-idml" required="false" select="'no'"/>
   <p:option name="idml-target-uri" required="false" select="''"/>
