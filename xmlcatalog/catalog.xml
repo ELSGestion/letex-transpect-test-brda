@@ -1,0 +1,21 @@
+<?xml version="1.0"?> 
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <!-- mandatory entry -->
+  <rewriteURI uriStartString="http://customers.le-tex.de/generic/book-conversion/" rewritePrefix="../"/>
+  <rewriteURI uriStartString="http://this.transpect.io/" rewritePrefix="../"/>
+	
+  <rewriteURI uriStartString="http://www.le-tex.de/resource/schema/" rewritePrefix="../schema/"/>
+
+  <nextCatalog catalog="../htmltables/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../idml2xml/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../cascade/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../idmlvalidation/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xml2idml/xmlcatalog/catalog.xml"/>
+  
+  <nextCatalog catalog="content-repo.catalog.xml"/>
+  <nextCatalog catalog="content-repo.default.catalog.xml"/>
+  
+</catalog>

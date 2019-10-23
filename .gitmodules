@@ -1,0 +1,22 @@
+[submodule "calabash"]
+	path = calabash
+	url = https://github.com/transpect/calabash-frontend
+	branch = saxon98
+[submodule "xproc-util"]
+	path = xproc-util
+	url = https://github.com/transpect/xproc-util
+[submodule "xslt-util"]
+	path = xslt-util
+	url = https://github.com/transpect/xslt-util
+[submodule "htmltables"]
+	path = htmltables
+	url = https://github.com/transpect/htmltables
+[submodule "xml2idml"]
+	path = xml2idml
+	url = https://github.com/transpect/xml2idml
+[submodule "idml2xml"]
+	path = idml2xml
+	url = https://github.com/transpect/idml2xml
+[submodule "cascade"]
+	path = cascade
+	url = https://github.com/transpect/cascade

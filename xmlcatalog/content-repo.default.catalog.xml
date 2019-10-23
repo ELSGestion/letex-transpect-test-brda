@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <rewriteURI uriStartString="http://transpect.io/content-repo/" rewritePrefix="../../content/"/> 
+<!--  <rewriteURI uriStartString="http://www.klett-cotta.de/transpect/content/" rewritePrefix="../content/"/> -->
+  <rewriteURI uriStartString="http://customer.le-tex.de/a9s/" rewritePrefix="../a9s/ELS/"/>
+	<rewriteURI uriStartString="http://customer.le-tex.de/adaptions/" rewritePrefix="../a9s/ELS/"/>
+</catalog>

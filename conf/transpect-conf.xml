@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://transpect.io/cascade/schema/transpect-conf.rng"?>
+<?xml-model href="http://transpect.io/cascade/schema/transpect-conf.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<conf xmlns="http://transpect.io"
+  content-base-uri="http://transpect.io/content-repo/" 
+  paths-xsl-uri="http://customers.le-tex.de/generic/book-conversion/a9s/common/xsl/paths.xsl">
+  <cascade>
+    <reserved name="xpl"/>
+    <reserved name="xsl"/>
+    <reserved name="schematron"/>
+    <reserved name="idml2xml"/>
+    <reserved name="xml2idml"/>
+    <clade role="publisher" name="ELS">
+      <clade role="production-line" name="BRDA">
+        <content role="work"/>  
+      </clade>
+    </clade>
+  </cascade>
+</conf>
