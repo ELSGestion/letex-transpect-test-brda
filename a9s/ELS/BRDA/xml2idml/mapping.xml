@@ -77,7 +77,7 @@
     </mapping-instruction>
     
     <mapping-instruction>
-      <path>p[matches(@class, '(Theme|Dossier)_Titre')][matches(/article/@class, 'orange')]</path>
+      <path>p[matches(@class, '^(Theme|Dossier)_Titre')][matches(/article/@class, 'orange')]</path>
       <format>STD%3aTheme_Titre_coul%3aTheme_Titre_Orange</format>
     </mapping-instruction>
     

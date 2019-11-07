@@ -107,11 +107,9 @@
         </p>
     </xsl:template>
     
-    <xsl:template match="article/p[matches(@type, 'Dossier_Titre')]">
+    <xsl:template match="article/p[matches(@type, 'Dossier_Titre')]" priority="2">
         <div class="Theme">
-            <p>
-               <xsl:apply-templates select="@*, node()"/> 
-            </p>
+            <xsl:next-match/>
         </div>
     </xsl:template>
     
