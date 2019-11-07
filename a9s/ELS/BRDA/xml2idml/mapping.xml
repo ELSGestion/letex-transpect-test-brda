@@ -77,7 +77,7 @@
     </mapping-instruction>
     
     <mapping-instruction>
-      <path>p[matches(@class, 'Theme_Titre')][matches(/article/@class, 'orange')]</path>
+      <path>p[matches(@class, '(Theme|Dossier)_Titre')][matches(/article/@class, 'orange')]</path>
       <format>STD%3aTheme_Titre_coul%3aTheme_Titre_Orange</format>
     </mapping-instruction>
     
@@ -203,11 +203,6 @@
     
     <!-- dossier -->
     <mapping-instruction>
-      <path>p[matches(@class, '^Dossier_Titre')]</path>
-      <format>STD%3aDossier_Titre</format>
-    </mapping-instruction>
-    
-    <mapping-instruction>
       <path>p[matches(@class, '^essentiel_Titre')]</path>
       <format>Encadres%3aEssentiel_Titre</format>
     </mapping-instruction>
@@ -292,16 +287,12 @@
     <mapping-instruction>
       <path>span[matches(@class, 'Carre_Obs')]</path>
       <xpath>@class</xpath>
-    </mapping-instruction>
+    </mapping-instruction>    
     
   </InlineStyles>
   
   <ObjectStyles>
-    <mapping-instruction>
-      <path>span[@class eq 'no']</path>
-      <anchoring type="inline"/>
-      <format>No</format>
-    </mapping-instruction>
+    
     
     <mapping-instruction>
       <path>span[matches(@class, 'Num')]</path>

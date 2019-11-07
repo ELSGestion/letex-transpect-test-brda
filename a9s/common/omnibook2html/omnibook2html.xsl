@@ -101,23 +101,45 @@
     <xsl:template match="p[matches(@type, 'essentiel_Titre')]">
         <p>
             <xsl:apply-templates select="@type"/>
-            <img src="{concat($s9y2-path, 'xml2idml/iconEssentiel.eps')}"/>
+            <span class="essentiel"/>
             <xsl:text> </xsl:text>
             <xsl:apply-templates select="node()"/> 
         </p>
     </xsl:template>
     
+    <xsl:template match="article/p[matches(@type, 'Dossier_Titre')]">
+        <div class="Theme">
+            <p>
+               <xsl:apply-templates select="@*, node()"/> 
+            </p>
+        </div>
+    </xsl:template>
+    
     <xsl:template match="style[matches(@type, 'FigA')]">
         <span>
-            <xsl:attribute name="class" select="concat('Anoter_', replace(ancestor::article[1]/@type, '^.+_(.+)$', '$1'))"></xsl:attribute>
+            <xsl:attribute name="class" select="concat('Anoter_', replace(ancestor::article[1]/@type, '^.+_(.+)$', '$1'))"/>
             <xsl:text>A noter</xsl:text>
         </span>
         <xsl:text> </xsl:text>        
     </xsl:template>
     
+    <xsl:template match="style[matches(@type, '^no$')]">
+        <span>
+            <xsl:attribute name="class" select="'No'"/>
+            <xsl:apply-templates select="node()"/>
+        </span>      
+    </xsl:template>
+    
+    <xsl:template match="style[matches(@type, 'RenvMem')]">
+        <span>
+            <xsl:attribute name="class" select="concat('RenvMem_', replace(ancestor::article[1]/@type, '^.+_(.+)$', '$1'))"/>
+            <xsl:apply-templates select="node()"/>
+        </span>      
+    </xsl:template>
+    
     <xsl:template match="style[matches(@type, 'Num|Carre_Obs')]">
         <span>
-            <xsl:attribute name="class" select="concat(@type, '_', replace(ancestor::article[1]/@type, '^.+_(.+)$', '$1'))"></xsl:attribute>
+            <xsl:attribute name="class" select="concat(@type, '_', replace(ancestor::article[1]/@type, '^.+_(.+)$', '$1'))"/>
             <xsl:apply-templates select="node()"/>
         </span>
     </xsl:template>
