@@ -4,8 +4,13 @@ ifeq ($(shell uname -o),Cygwin)
 win_path = $(shell cygpath -ma "$(1)")
 uri = $(shell echo file:///$(call win_path,$(1))  | sed -r 's/ /%20/g')
 else
+ifeq ($(shell uname -o),Msys)
 win_path = $(shell readlink -m "$(1)")
-uri = $(shell echo file:$(abspath $(1))  | sed -r 's/ /%20/g')
+uri = file:///$(shell echo $(shell cd $(dir $(1)) && pwd -W)/$(notdir $(1)) | sed -r 's/ /%20/g')
+else
+win_path = $(shell readlink -m "$(1)")
+uri = $(shell echo $(abspath $(1))  | sed -r 's/ /%20/g')
+endif
 endif
 
 out_replace = $(shell echo $(1) | sed -r 's/\/(idml|xml)\/([^.]+)(\.indb)?\.[a-z]+$$/\/$(2)\/\2.$(3)/')
