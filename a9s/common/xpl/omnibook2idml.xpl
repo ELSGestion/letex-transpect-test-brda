@@ -49,7 +49,7 @@
     
     <p:sink/>  
     
-    <tr:load-cascaded name="load-xml2html-xsl" filename="omnibook2html/omnibook2html.xsl"
+  <tr:load-cascaded name="load-xml2html-xsl" filename="xml2html/xml2html.xsl"
         fallback="http://transpect.io/idml2xml/xsl/idml2xml.xsl">
         <p:with-option name="debug" select="$debug" />
         <p:with-option name="debug-dir-uri" select="$debug-dir-uri" />

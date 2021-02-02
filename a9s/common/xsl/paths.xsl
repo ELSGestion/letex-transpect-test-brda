@@ -13,7 +13,16 @@
     <xsl:param name="filename" as="xs:string?"/>
     <xsl:variable name="basename" select="tr:basename($filename)"/>
     <xsl:attribute name="publisher" select="'ELS'"/>
-    <xsl:attribute name="production-line" select="'BRDA'"/>
+    <xsl:attribute name="production-line">
+      <xsl:choose>
+        <xsl:when test="contains($filename, 'BRDA')">
+          <xsl:text>BRDA</xsl:text>
+        </xsl:when>
+        <xsl:when test="contains($filename, 'BULLETIN')">
+          <xsl:text>BULLETIN</xsl:text>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:attribute>
     <xsl:attribute name="ext" select="tr:ext($filename)"/>
     <xsl:attribute name="work" select="replace($basename, '\D', '')"/>          
     <xsl:attribute name="basename" select="$basename"/>

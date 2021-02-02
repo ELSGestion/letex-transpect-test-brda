@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
-  <rewriteURI uriStartString="http://lefebvre-sarrut.eu/content-repo/" rewritePrefix="../../content/"/> 
+  <rewriteURI uriStartString="http://lefebvre-sarrut.eu/content-repo/" rewritePrefix="../_content/"/> 
 </catalog>

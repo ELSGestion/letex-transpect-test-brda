@@ -12,7 +12,10 @@
     <reserved name="xml2idml"/>
     <clade role="publisher" name="ELS">
       <clade role="production-line" name="BRDA">
-        <content role="work"/>  
+        <content role="work"/>
+      </clade>
+      <clade role="production-line" name="BULLETIN">
+        <content role="work"/>
       </clade>
     </clade>
   </cascade>
