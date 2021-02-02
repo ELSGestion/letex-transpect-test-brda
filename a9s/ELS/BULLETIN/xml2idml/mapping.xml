@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-model href="../../../../xml2idml/schema/mapping.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mapping-instructions 
+  xmlns="http://transpect.io/xml2idml"
+  xmlns:xml2idml="http://transpect.io/xml2idml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:htmltable="http://transpect.io/htmltable"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:dbk="http://docbook.org/ns/docbook"
+  xpath-default-namespace="http://www.w3.org/1999/xhtml"
+  retain-tagging="false">
+  
+  <import href="http://transpect.io/htmltables/xsl/html-tables.xsl" />
+    
+  <inline>   
+    
+    <xsl:template match="article" mode="xml2idml:Stories">
+      <xsl:copy>
+        <xsl:apply-templates select="@*" mode="#current"/>
+        <xsl:attribute name="retain-tagging" select="'false'"/>
+        <xsl:attribute name="xml2idml:storyname" select="'main'"/>
+        <xsl:variable name="master-page-name" select="tr:master-name(@class)"/>
+        <xml2idml:OtherMappingConfiguration>
+          <Pages>
+            <!--1st ARTICLE-->
+            <Spread MasterPageName="C-Premiere" Repeat="1" MainStoryXPath="article" MainStoryName="main">
+              <!--<Stories>
+                <mapping-instruction>
+                  <path>div[@class = 'sommaireGauche']</path>
+                  <name>sommaireGauche</name>
+                </mapping-instruction>
+              </Stories>-->
+            </Spread>
+            <Spread MasterPageName="B-Zoom sur 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+            <Spread MasterPageName="A-Zomm sur" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+            
+            <!--LIST OF ACTUALISATION-->
+            <Spread MasterPageName="E-Actualisation 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+            <Spread MasterPageName="D-Actualisation" Repeat="20" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+            
+            <!--LIST OF ARRETS-->
+            
+          </Pages>
+        </xml2idml:OtherMappingConfiguration>
+        <xsl:apply-templates select="node()" mode="#current"/>
+      </xsl:copy>
+    </xsl:template>
+    
+  </inline>
+  
+  <xslt-pipeline>
+    <step mode="htmltable:tables-add-atts" before="xml2idml:CellStyles"/>
+  </xslt-pipeline>
+  
+  <Stories>
+    <!--<mapping-instruction>
+      <path>div[@class eq 'Theme']</path>
+      <name>rubrique</name>
+    </mapping-instruction>-->
+    <!--<mapping-instruction>
+      <path>article</path>
+      <name>D-Actualisation</name>
+    </mapping-instruction>-->
+  </Stories>
+  
+  <ParaStyles>
+    
+    <mapping-instruction>
+      <path>p[@class]</path>
+      <xpath>@class</xpath>
+    </mapping-instruction>
+    
+    <!--<mapping-instruction>
+      <path>p[matches(@class, 'Theme_Titre')][matches(/article/@class, 'bleu')]</path>
+      <format>STD%3aTheme_Titre_coul%3aTheme_Titre_Bleu</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Theme_Titre')][matches(/article/@class, 'marron')]</path>
+      <format>STD%3aTheme_Titre_coul%3aTheme_Titre_Marron</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^(Theme|Dossier)_Titre')][matches(/article/@class, 'orange')]</path>
+      <format>STD%3aTheme_Titre_coul%3aTheme_Titre_Orange</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^Titre')]</path>
+      <format>STD%3aTitre</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'H1')][matches(/article/@class, 'bleu')]</path>
+      <format>STD%3aH1_Couleur%3aH1_Bleu</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'H1')][matches(/article/@class, 'marron')]</path>
+      <format>STD%3aH1_Couleur%3aH1_Marron</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'H1')][matches(/article/@class, 'orange')]</path>
+      <format>STD%3aH1_Couleur%3aH1_Orange</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'H2')]</path>
+      <format>STD%3aH2</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'H3')]</path>
+      <format>STD%3aH3</format>
+    </mapping-instruction>
+
+    <mapping-instruction>
+      <path>p[matches(@class, 'Chapo')]</path>
+      <format>STD%3aCHAPO</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet1')][matches(/article/@class, 'bleu')]</path>
+      <format>STD%3aAnalyse_Filet1%3aAnalyse_Filet1_bleu</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet2')][matches(/article/@class, 'bleu')]</path>
+      <format>STD%3aAnalyse_Filet2%3aAnalyse_Filet2_bleu</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet1')][matches(/article/@class, 'marron')]</path>
+      <format>STD%3aAnalyse_Filet1%3aAnalyse_Filet1_marron</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet2')][matches(/article/@class, 'marron')]</path>
+      <format>STD%3aAnalyse_Filet2%3aAnalyse_Filet2_marron</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet1')][matches(/article/@class, 'orange')]</path>
+      <format>STD%3aAnalyse_Filet1%3aAnalyse_Filet1_orange</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_filet2')][matches(/article/@class, 'orange')]</path>
+      <format>STD%3aAnalyse_Filet2%3aAnalyse_Filet2_orange</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_Texte')]</path>
+      <format>STD%3aAnalyse_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Analyse_Source')]</path>
+      <format>STD%3aAnalyse_Source</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Observation_Texte')]</path>
+      <format>STD%3aObservation_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Commentaire_Source')]</path>
+      <format>STD%3aCommentaire_Source</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path priority="2">p[matches(@class, 'Commentaire_Texte')][span[matches(@class, 'Num')]][matches(/article/@class, 'bleu')]</path>
+      <format>STD%3aCommentaires_Texte_Num_New%3aCommentaire_Texte_Num_New_Bleu</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path priority="2">p[matches(@class, 'Commentaire_Texte')][span[matches(@class, 'Num')]][matches(/article/@class, 'marron')]</path>
+      <format>STD%3aCommentaires_Texte_Num_New%3aCommentaire_Texte_Num_New_Marron</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path priority="2">p[matches(@class, 'Commentaire_Texte')][span[matches(@class, 'Num')]][matches(/article/@class, 'orange')]</path>
+      <format>STD%3aCommentaires_Texte_Num_New%3aCommentaire_Texte_Num_New_Orange</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Commentaire_Texte$')]</path>
+      <format>STD%3aCommentaire_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Commentaire_TextePetit')][not(matches(/article/@class, 'dossier'))]</path>
+      <format>STD%3aCommentaire_TextePetit</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'Commentaire_TextePetit')][matches(/article/@class, 'dossier')]</path>
+      <format>STD%3aCommentaire_TextePetit_3col</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, 'RenvMem')]</path>
+      <format>STD%3aRenvMem</format>
+    </mapping-instruction>
+    
+    <!-\- dossier -\->
+    <mapping-instruction>
+      <path>p[matches(@class, '^essentiel_Titre')]</path>
+      <format>Encadres%3aEssentiel_Titre</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^essentiel_Liste')]</path>
+      <format>Encadres%3aEssentiel_Liste</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^SOM_Dossier_Theme')]</path>
+      <format>STD%3aDossier_SOM</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^SOM_Dossier_Titre')]</path>
+      <format>STD%3aDossier_SOM_Titre</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^complement_Titre')]</path>
+      <format>Encadres%3aComplement_Titre</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^complement_Texte')]</path>
+      <format>Encadres%3aComplement_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'table-wrap')]</path>
+      <format>Tableau%3aTab_2col</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^Tab_Texte')]</path>
+      <format>Tableau%3aTab_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^avisExpert_Texte')]</path>
+      <format>Encadres%3aAvis_Expert_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>p[matches(@class, '^exergue_Texte')]</path>
+      <format>exergue_Texte</format>
+    </mapping-instruction>
+    
+    <mapping-instruction is-image="true" path-to-image-uri="@src">
+      <path>img[not(ancestor::p)]</path>
+      <format>Encadres%3aExpert_Auteur</format>
+    </mapping-instruction>
+    -->
+    
+  </ParaStyles>
+  
+  
+  <InlineStyles>
+    
+    <mapping-instruction>
+      <path>em</path>
+      <format>Italique</format>
+    </mapping-instruction>
+    
+   <!-- <mapping-instruction is-image="true" path-to-image-uri="@src">
+      <path>p/img</path>
+    </mapping-instruction>
+    
+    <mapping-instruction hyperlink-dest="@id">
+      <path>a[@id]</path>
+    </mapping-instruction>
+    
+    <mapping-instruction hyperlink-source="@href">
+      <path>a[@href]</path>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>span[@class eq 'motRep']</path>
+      <format>bold</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>sup</path>
+      <format>Pg-STD%3asup</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>span[matches(@class, 'Carre_Obs')]</path>
+      <xpath>@class</xpath>
+    </mapping-instruction>-->
+    
+  </InlineStyles>
+  
+  <ObjectStyles>
+    
+    
+    <!--<mapping-instruction>
+      <path>span[matches(@class, 'Num')]</path>
+      <anchoring type="inline"/>
+      <xpath>@class</xpath>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>span[matches(@class, 'Anoter')]</path>
+      <anchoring type="inline"/>
+      <xpath>@class</xpath>
+    </mapping-instruction>   
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'essentiel')]</path>
+      <anchoring type="empty-para"/>
+      <format>Essentiel</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'SomDossier')]</path>
+      <anchoring type="inline"/>
+      <format>Som_Dossier</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'complement')]</path>
+      <anchoring type="inline"/>
+      <format>Complement</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'avisExpert')]</path>
+      <anchoring type="empty-para"/>
+      <format>Expert</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>div[matches(@class, 'exergue')]</path>
+      <anchoring type="empty-para"/>
+      <format>exergue</format>
+    </mapping-instruction>-->
+    
+  </ObjectStyles>
+  
+  <TableStyles>
+    
+    <!--<mapping-instruction>
+      <path>table</path>
+      <format>Tableau_Veille</format>
+    </mapping-instruction>-->
+    
+  </TableStyles>
+  
+  <CellStyles>
+    
+    <!--<mapping-instruction>
+      <path>td | th</path>
+      <format>Middle</format>
+    </mapping-instruction>-->
+    
+  </CellStyles>
+  
+</mapping-instructions>
