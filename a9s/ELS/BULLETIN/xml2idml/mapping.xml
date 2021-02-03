@@ -19,27 +19,31 @@
         <xsl:apply-templates select="@*" mode="#current"/>
         <xsl:attribute name="retain-tagging" select="'false'"/>
         <xsl:attribute name="xml2idml:storyname" select="'main'"/>
-        <xsl:variable name="master-page-name" select="tr:master-name(@class)"/>
         <xml2idml:OtherMappingConfiguration>
           <Pages>
-            <!--1st ARTICLE-->
-            <Spread MasterPageName="C-Premiere" Repeat="1" MainStoryXPath="article" MainStoryName="main">
-              <!--<Stories>
-                <mapping-instruction>
-                  <path>div[@class = 'sommaireGauche']</path>
-                  <name>sommaireGauche</name>
-                </mapping-instruction>
-              </Stories>-->
-            </Spread>
-            <Spread MasterPageName="B-Zoom sur 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
-            <Spread MasterPageName="A-Zomm sur" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
-            
-            <!--LIST OF ACTUALISATION-->
-            <Spread MasterPageName="E-Actualisation 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
-            <Spread MasterPageName="D-Actualisation" Repeat="20" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
-            
-            <!--LIST OF ARRETS-->
-            
+            <xsl:choose>
+              <xsl:when test="@class = 'ARTICLEZOOM'">
+                <!--1st ARTICLE-->
+                <Spread MasterPageName="C-Premiere" Repeat="1" MainStoryXPath="article" MainStoryName="main">
+                  <!--<Stories>
+                    <mapping-instruction>
+                      <path>div[@class = 'sommaireGauche']</path>
+                      <name>sommaireGauche</name>
+                    </mapping-instruction>
+                  </Stories>-->
+                </Spread>
+                <Spread MasterPageName="B-Zoom sur 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+                <Spread MasterPageName="A-Zomm sur" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+              </xsl:when>
+              <xsl:when test="@class = 'ARTICLEACTUCC'">
+                <!--LIST OF ACTUALISATION-->
+                <Spread MasterPageName="E-Actualisation 1re" Repeat="1" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+                <Spread MasterPageName="D-Actualisation" Repeat="20" MainStoryXPath="article" MainStoryName="main" MainStoryContinued="true"/>
+              </xsl:when>
+              <xsl:when test="@class = 'ARTICLEARRETCC'">
+                <!--LIST OF ARRETS-->
+              </xsl:when>
+            </xsl:choose>
           </Pages>
         </xml2idml:OtherMappingConfiguration>
         <xsl:apply-templates select="node()" mode="#current"/>
@@ -350,19 +354,24 @@
   
   <TableStyles>
     
-    <!--<mapping-instruction>
+    <mapping-instruction>
       <path>table</path>
-      <format>Tableau_Veille</format>
-    </mapping-instruction>-->
+      <format>tab01</format>
+    </mapping-instruction>
     
   </TableStyles>
   
   <CellStyles>
     
-    <!--<mapping-instruction>
-      <path>td | th</path>
-      <format>Middle</format>
-    </mapping-instruction>-->
+    <mapping-instruction>
+      <path>td</path>
+      <format>courant</format>
+    </mapping-instruction>
+    
+    <mapping-instruction>
+      <path>th</path>
+      <format>entete</format>
+    </mapping-instruction>
     
   </CellStyles>
   
