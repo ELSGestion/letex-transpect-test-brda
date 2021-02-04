@@ -468,7 +468,7 @@
       <REFERENCE>Avenant n° 66, 20 mars 2019 (déposé 24 avr - BO/CC 2019/21, juin)</REFERENCE>
       <SIGNATURE/>
     </ARTICLEACTUCC>
-    <!--<ARTICLEACTUCC>
+    <ARTICLEACTUCC>
       <THEME>
         <CODE>15w004</CODE>
         <LIBELLE>Agences de mannequins</LIBELLE>
@@ -18709,7 +18709,7 @@
       </article>
       <REFERENCE>Accord 7 févr. 2019 (déposé 13 mars - avis JO, 14 juin)</REFERENCE>
       <SIGNATURE/>
-    </ARTICLEACTUCC>-->
+    </ARTICLEACTUCC>
   </RACINEACTUCC>
   <RACINEARRETCC>
     <!--<ARTICLEARRETCC>

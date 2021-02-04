@@ -48,11 +48,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>_content/ELS/BULLETIN/379/EL_TEE_bulletinActualisation-379-print.xml</String>
+                                    <String>_content/ELS/BULLETIN/379/xml/bulletin-379_print.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>bulletin2html.xsl</String>
+                                        <String>BULLETIN  - xml2html.xsl</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -76,7 +76,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>bulletin2html.xsl</String>
+                                    <String>BULLETIN  - xml2html.xsl</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -94,7 +94,7 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/a9s/ELS/BULLETIN/bulletin2html.xsl</String>
+                                    <String>${pdu}/a9s/ELS/BULLETIN/xml2html/xml2html.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String>${currentFileURL}</String>
