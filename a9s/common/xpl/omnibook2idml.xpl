@@ -92,7 +92,19 @@
         </tr:store-debug>
     </p:viewport>
     
-    <p:for-each name="split" cx:depends-on="image-id">
+    <tr:xml2idml name="xml2idml">
+      <p:input port="paths">
+        <p:pipe port="result" step="paths"/>
+      </p:input>
+      <p:with-option name="mapping" select="'xml2idml/mapping.xml'" />
+      <p:with-option name="template" select="'xml2idml/template.idml'"/>
+      <p:with-option name="idml-target-uri" select="$idml-target-uri"/>
+      <p:with-option name="idmltemplate-expanded-dir-uri" select="$idml-template-expanded-uri"/>
+      <p:with-option name="debug" select="$debug"/>
+      <p:with-option name="debug-dir-uri" select="$debug-dir-uri" />
+    </tr:xml2idml>
+  
+    <!--<p:for-each name="split" cx:depends-on="image-id">
         <p:iteration-source select="/*:html/*:body/*:article">
             <p:pipe port="result" step="image-id"/>
         </p:iteration-source>
@@ -115,7 +127,7 @@
             <p:with-option name="debug" select="$debug"/>
             <p:with-option name="debug-dir-uri" select="concat($debug-dir-uri, '/', $filename)" />
         </tr:xml2idml>
-    </p:for-each>
+    </p:for-each>-->
     
     <p:sink/>
     

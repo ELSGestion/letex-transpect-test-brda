@@ -30,8 +30,16 @@
   </xsl:template>
   
   <xsl:template match="ParagraphStyleRange/@AppliedParagraphStyle[matches(., '^ParagraphStyle/STD%3aNo$')]" mode="xml2idml:storify_content-n-cleanup">
-    <xsl:variable name="colour" as="xs:string" select="tokenize(preceding::*:Spread[1]/@MasterPageName, '_')[last()]"/>
-    <xsl:attribute name="AppliedParagraphStyle" select="concat('ParagraphStyle/STD%3aNo_Couleur%3aNo_', $colour)"/>
+    <xsl:variable name="colour" as="xs:string?" select="tokenize(preceding::*:Spread[1]/@MasterPageName, '_')[last()]"/>
+    <xsl:choose>
+      <xsl:when test="exists($colour)">
+        <xsl:attribute name="AppliedParagraphStyle" select="concat('ParagraphStyle/STD%3aNo_Couleur%3aNo_', $colour)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>[ERROR][<xsl:value-of select="tokenize(static-base-uri(),'/')[last()]"/>] $colour vide !!!</xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
+    
   </xsl:template>
   
   <xsl:function name="xml2idml:create-image-container" as="element()?">
