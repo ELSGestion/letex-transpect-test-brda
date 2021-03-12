@@ -16,19 +16,18 @@
   
    <xsl:import href="http://transpect.io/xml2idml/xsl/storify.xsl"/>
   
-    <xsl:template match="*:col" mode="xml2idml:storify_table-declarations">
-      <xsl:variable name="width" as="xs:string"
-        select="if (not($xml2idml:use-main-story-width-for-tables) and @css:width) 
-                then @css:width 
-                else 
-                  if ($xml2idml:main-story-TextColumnFixedWidth ne '') 
-                  then concat(
-                    xs:double($xml2idml:main-story-TextColumnFixedWidth) div count(../*:col),
-                    'pt'
-                  )
-                  else '2000'"/><!-- 2000 is a default twips value (100pt) -->
-      <Column Self="col_{generate-id()}_{position() - 1}" Name="{position() - 1}"
-        SingleColumnWidth="{(tr:length-to-unitless-twip($width), 2000)[1] * 0.05}" />
-    </xsl:template>
+  <xsl:template match="*[@aid:table eq 'table']" mode="xml2idml:storify" priority="1.5">
+    <xsl:variable name="base-id" select="concat('tb_', generate-id())" as="xs:string"/>
+    <Table Self="{$base-id}">
+      <xsl:copy-of select="@data-print-display-col"/>
+      <xsl:apply-templates select="  @aid5:tablestyle 
+        | (@data-colcount, *:tbody/@data-colcount)[1]
+        | @data-rowcount
+        | *[local-name() = ('thead', 'tbody', 'tfoot')]/@data-rowcount" mode="#current" />
+      <xsl:apply-templates select="." mode="xml2idml:storify_table-declarations" />
+      <!-- default template rules (i.e., process content): -->
+      <xsl:apply-templates select="node()" mode="#current" />
+    </Table>
+  </xsl:template>
   
 </xsl:stylesheet>
