@@ -14,23 +14,26 @@
     
   <inline>   
     
-    <xsl:template match="article" mode="xml2idml:Stories">
+    <xsl:template match="/html" mode="xml2idml:Stories">
       <xsl:copy>
         <xsl:apply-templates select="@*" mode="#current"/>
-        <xsl:attribute name="retain-tagging" select="'false'"/>
-        <xsl:attribute name="xml2idml:storyname" select="'main'"/>
-        <xsl:variable name="master-page-name" select="tr:master-name(@class)"/>
         <xml2idml:OtherMappingConfiguration>
           <Pages>
-            <Spread Repeat="1" MainStoryXPath="article" MainStoryName="main" MasterPageName="{$master-page-name}">              
-              <Stories>
-                <mapping-instruction>
-                  <path>div[@class eq 'Theme']</path>
-                  <name>rubrique</name>
-                </mapping-instruction>
-              </Stories>
-            </Spread>     
-            <Spread MasterPageName="{$master-page-name}" Repeat="5" MainStoryContinued="true" MainStoryName="main" MainStoryXPath="article"/>
+            <xsl:for-each select="body/article">
+              <xsl:variable name="master-page-name" select="tr:master-name(current()/@class)"/>
+              <Spread Repeat="1" MainStoryXPath="body" MainStoryName="main" MasterPageName="{$master-page-name}">       
+                <xsl:if test="position() ne 1">
+                  <xsl:attribute name="MainStoryContinued" select="'true'"/>
+                </xsl:if>
+                <Stories>
+                  <mapping-instruction>
+                    <path>div[@class eq 'Theme']</path>
+                    <name>rubrique</name>
+                  </mapping-instruction>
+                </Stories>
+              </Spread>     
+              <Spread MasterPageName="{$master-page-name}" Repeat="5" MainStoryContinued="true" MainStoryName="main" MainStoryXPath="body"/>
+            </xsl:for-each>
           </Pages>
         </xml2idml:OtherMappingConfiguration>
         <xsl:apply-templates select="node()" mode="#current"/>
@@ -57,11 +60,21 @@
     <step mode="htmltable:tables-add-atts" before="xml2idml:CellStyles"/>
   </xslt-pipeline>
   
+  <Discard>
+    <mapping-instruction>
+      <path>/html/head</path>
+    </mapping-instruction>
+  </Discard>
+  
   <Stories>    
     <mapping-instruction>
       <path>div[@class eq 'Theme']</path>
       <name>rubrique</name>
-    </mapping-instruction>     
+    </mapping-instruction>
+    <mapping-instruction>
+      <path>body</path>
+      <name>main</name>
+    </mapping-instruction>
   </Stories>
   
   <ParaStyles>
